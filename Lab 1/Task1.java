@@ -7,9 +7,9 @@ public class NumericTypes {
 
     public static void main(String[] args) {
         final int NUMBER = 2;
+        final int BOILING_IN_F = 212;
         double SCORE1 = 100;
         double SCORE2 = 95;
-        final int BOILING_IN_F = 212;
 
         double average = (SCORE1 + SCORE2) / NUMBER;
         String output = SCORE1 + " and " + SCORE2 + " have an average of " + average;
