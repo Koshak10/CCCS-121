@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * This program allows the user to order a pizza.
+ */
 public class PizzaOrder {
 
     public static void main(String[] args) {
