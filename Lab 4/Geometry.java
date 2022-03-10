@@ -16,6 +16,7 @@ public class Geometry {
 
         Scanner keyboard = new Scanner(System.in);
         do {
+            // TASK #1 Call the printMenu method
             printMenu();
 
             int choice = keyboard.nextInt();
@@ -77,6 +78,8 @@ public class Geometry {
         } while (letter != 'Y' && letter != 'y');
     }
 
+    // TASK #1 Create the printMenu method here
+
     /**
      * A menu of options for the user to choose from.
      *
@@ -95,7 +98,9 @@ public class Geometry {
         );
         System.out.print("Enter the number of your choice: ");
     }
-
+    
+    // TASK #2 Create the value-returning methods here
+    
     /**
      * This method takes in the radius of the circle and calculates the area.
      *
