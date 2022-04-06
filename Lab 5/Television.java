@@ -1,20 +1,12 @@
 // The purpose of this class is to model a television
 // Your name and today's date
 public class Television {
-
-    // The brand name
+    
     private final String MANUFACTURER;
-
-    // The size of the television screen
     private final int SCREEN_SIZE;
-
-    // true if the power is on and false if the power is off
+    
     private boolean powerOn;
-
-    // The value of the station that the television is showing
     private int channel;
-
-    // A number value representing loudness
     private int volume;
 
     public Television(String brand, int size) {
