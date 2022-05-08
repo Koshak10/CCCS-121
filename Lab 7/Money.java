@@ -29,7 +29,7 @@ public class Money {
     /**
      * A copy constructor accepts an existing object of the same class
      * and clones it.
-     * @param otherObject The parameter object to copy the value of each instance variable from.
+     * @param otherObject The object to copy.
      */
     public Money(Money otherObject) {
         dollars = otherObject.dollars;
