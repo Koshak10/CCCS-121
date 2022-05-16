@@ -5,7 +5,7 @@ public class OptionsPane {
         System.out.println("--- Car Rental Application ---");
         System.out.println(" 1 - Manage customer database");
         System.out.println(" 2 - Manage vehicle database");
-        System.out.println(" 0 - End program");
+        System.out.println(" 0 - Exit program");
     }
 
     public static void printCustomerOptions() {
