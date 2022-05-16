@@ -27,9 +27,7 @@ public class CustomerManager {
 
             Customer customer = new Customer(customerId, name, phoneNumber);
 
-            if (!contains(customer)) {
-                customers.add(customer);
-            }
+            customers.add(customer);
         }
 
         inputFile.close();
@@ -38,14 +36,9 @@ public class CustomerManager {
     public void newRecord(Customer customer) throws IOException {
         for (Customer c : customers) {
             if (c.getCustomerId() == customer.getCustomerId()) {
-                System.out.println("ERROR: Customer is already registered in the database!");
+                System.out.println("ERROR: Customer with this ID is already registered in the database!");
                 return;
             }
-        }
-
-        if (contains(customer)) {
-            System.out.println("ERROR: Customer is already registered in the database!");
-            return;
         }
 
         FileWriter fileWriter = new FileWriter("customers.txt", true);
@@ -53,7 +46,6 @@ public class CustomerManager {
         printWriter.println(customer);
         printWriter.close();
 
-        customers.add(customer);
         System.out.println("SUCCESS: Customer registered to Car Rental database!");
     }
 
@@ -134,7 +126,6 @@ public class CustomerManager {
         inputFile.close();
         textFile(lines);
 
-        customers.remove(customer);
         System.out.println("SUCCESS: Customer was removed from the database!");
     }
 
@@ -161,16 +152,13 @@ public class CustomerManager {
         outputFile.close();
     }
 
-    private boolean contains(Customer customer) {
-        for (Customer c : customers) {
-            if (c.getCustomerId() == customer.getCustomerId()) {
-                return true;
+    public Customer getCustomer(int customerId) {
+        for (Customer customer : customers) {
+            if (customer.getCustomerId() == customerId) {
+                return customer;
             }
         }
-        return false;
-    }
 
-    public ArrayList<Customer> getCustomers() {
-        return customers;
+        return null;
     }
 }
