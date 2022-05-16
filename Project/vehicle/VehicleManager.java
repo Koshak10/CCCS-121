@@ -260,10 +260,7 @@ public class VehicleManager {
 
     private boolean contains(Vehicle vehicle) {
         for (Vehicle v : vehicles) {
-            if (v.getModelYear() == vehicle.getModelYear()
-                    || v.getMake().equals(vehicle.getMake())
-                    || v.getModelName().equals(vehicle.getModelName())
-                    || v.getLicensePlate().equals(vehicle.getLicensePlate())) {
+            if (v.getLicensePlate().equals(vehicle.getLicensePlate())) {
                 return true;
             }
         }
