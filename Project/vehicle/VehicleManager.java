@@ -40,25 +40,25 @@ public class VehicleManager {
             if (!lastItem.equals("Available")) {
                 int customerId = Integer.parseInt(lastItem);
 
-                for (Customer customer : customerManager.getCustomers()) {
-                    if (customer.getCustomerId() == customerId) {
-                        vehicle.setCustomer(customer);
-                        break;
-                    }
-                }
+                Customer customer = customerManager.getCustomer(customerId);
+
+                vehicle.setCustomer(customer);
             }
 
-            if (!contains(vehicle)) {
-                vehicles.add(vehicle);
-            }
+            vehicles.add(vehicle);
         }
         inputFile.close();
     }
 
     public void add(Vehicle vehicle) throws IOException {
-        if (contains(vehicle)) {
-            System.out.println("ERROR: Vehicle already exists in the database!");
-            return;
+        for (Vehicle v : vehicles) {
+            if (v.getModelYear() == vehicle.getModelYear()
+                    && v.getMake().equals(vehicle.getMake())
+                    && v.getModelName().equals(vehicle.getModelName())
+                    && v.getLicensePlate().equals(vehicle.getLicensePlate())) {
+                System.out.println("ERROR: Vehicle already exists in the database!");
+                return;
+            }
         }
 
         FileWriter fileWriter = new FileWriter("vehicles.txt", true);
@@ -66,18 +66,11 @@ public class VehicleManager {
         printWriter.println(vehicle);
         printWriter.close();
 
-        vehicles.add(vehicle);
         System.out.println("SUCCESS: Vehicle was added to Car Rental database!");
     }
 
     public void remove(String licensePlate) throws IOException {
-        Vehicle vehicle = null;
-        for (Vehicle v : vehicles) {
-            if (v.getLicensePlate().equals(licensePlate)) {
-                vehicle = v;
-                break;
-            }
-        }
+        Vehicle vehicle = getVehicle(licensePlate);
 
         if (vehicle == null) {
             System.out.println("ERROR: Vehicle does not exist in the database!");
@@ -108,32 +101,19 @@ public class VehicleManager {
         inputFile.close();
 
         textFile(lines);
-        setup();
 
         System.out.println("SUCCESS: Vehicle with license plate: " + licensePlate + " was removed from the database!");
     }
 
     public void rent(String licensePlate, int customerId) throws IOException {
-        Customer customer = null;
-        for (Customer c : customerManager.getCustomers()) {
-            if (c.getCustomerId() == customerId) {
-                customer = c;
-                break;
-            }
-        }
+        Customer customer = customerManager.getCustomer(customerId);
 
         if (customer == null) {
             System.out.println("ERROR: Customer does not exist in the database!");
             return;
         }
 
-        Vehicle vehicle = null;
-        for (Vehicle v : vehicles) {
-            if (v.getLicensePlate().equals(licensePlate)) {
-                vehicle = v;
-                break;
-            }
-        }
+        Vehicle vehicle = getVehicle(licensePlate);
 
         if (vehicle == null) {
             System.out.println("ERROR: Vehicle does not exist in the database!");
@@ -169,23 +149,15 @@ public class VehicleManager {
 
             lines.add(str);
         }
-
         inputFile.close();
 
         textFile(lines);
-        setup();
 
         System.out.println("SUCCESS: Rented. Updated details: " + vehicle);
     }
 
     public void receive(String licensePlate) throws IOException {
-        Vehicle vehicle = null;
-        for (Vehicle v : vehicles) {
-            if (v.getLicensePlate().equals(licensePlate)) {
-                vehicle = v;
-                break;
-            }
-        }
+        Vehicle vehicle = getVehicle(licensePlate);
 
         if (vehicle == null) {
             System.out.println("ERROR: Vehicle does not exist in the database!");
@@ -222,11 +194,9 @@ public class VehicleManager {
 
             lines.add(str);
         }
-
         inputFile.close();
 
         textFile(lines);
-        setup();
 
         System.out.println("SUCCESS: Received. Updated details: " + vehicle);
     }
@@ -258,14 +228,14 @@ public class VehicleManager {
         outputFile.close();
     }
 
-    private boolean contains(Vehicle vehicle) {
-        for (Vehicle v : vehicles) {
-            if (v.getLicensePlate().equals(vehicle.getLicensePlate())) {
-                return true;
+    private Vehicle getVehicle(String licensePlate) {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getLicensePlate().equals(licensePlate)) {
+                return vehicle;
             }
         }
 
-        return false;
+        return null;
     }
 
 }
