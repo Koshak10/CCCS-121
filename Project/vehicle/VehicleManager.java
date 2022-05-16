@@ -180,7 +180,6 @@ public class VehicleManager {
 
     public void receive(String licensePlate) throws IOException {
         Vehicle vehicle = null;
-
         for (Vehicle v : vehicles) {
             if (v.getLicensePlate().equals(licensePlate)) {
                 vehicle = v;
