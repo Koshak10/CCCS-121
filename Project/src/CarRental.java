@@ -11,24 +11,24 @@ public class CarRental {
     public static void main(String[] args) throws IOException {
         Scanner keyboard = new Scanner(System.in);
 
-        CustomerManager customerManager = new CustomerManager();
-        customerManager.setup();
+        do {
+            CustomerManager customerManager = new CustomerManager();
+            customerManager.setup();
 
-        VehicleManager vehicleManager = new VehicleManager(customerManager);
-        vehicleManager.setup();
+            VehicleManager vehicleManager = new VehicleManager(customerManager);
+            vehicleManager.setup();
 
-        OptionsPane.printMainMenu();
-        System.out.print("> ");
+            OptionsPane.printMainMenu();
+            System.out.print("> ");
 
-        int choice = keyboard.nextInt();
-        switch (choice) {
-            case 1 -> customerMenu(customerManager);
-            case 2 -> vehicleMenu(vehicleManager);
-            case 0 -> System.exit(0);
-            default -> System.out.println("Invalid choice! Please try again.");
-        }
-
-        keyboard.close();
+            int choice = keyboard.nextInt();
+            switch (choice) {
+                case 1 -> customerMenu(customerManager);
+                case 2 -> vehicleMenu(vehicleManager);
+                case 0 -> System.exit(0);
+                default -> System.out.println("Invalid choice! Please try again.");
+            }
+        } while (true);
     }
 
     public static void customerMenu(CustomerManager customerManager) throws IOException {
