@@ -13,10 +13,10 @@ public class CustomerManager {
 
     public void setup() throws IOException {
         File file = new File("customers.txt");
-        if (!file.exists()) {
-            PrintWriter outputFile = new PrintWriter(file);
-            outputFile.close();
-        }
+//        if (!file.exists()) {
+//            PrintWriter outputFile = new PrintWriter(file);
+//            outputFile.close();
+//        }
 
         Scanner inputFile = new Scanner(file);
 
@@ -34,7 +34,6 @@ public class CustomerManager {
 
             customers.add(customer);
         }
-
         inputFile.close();
     }
 
@@ -127,7 +126,7 @@ public class CustomerManager {
             lines.add(str);
         }
         inputFile.close();
-        
+
         textFile(lines);
 
         System.out.println("SUCCESS: Customer was removed from the database!");
