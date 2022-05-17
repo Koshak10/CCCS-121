@@ -22,10 +22,10 @@ public class VehicleManager {
 
     public void setup() throws IOException {
         File file = new File("vehicles.txt");
-        if (!file.exists()) {
-            PrintWriter outputFile = new PrintWriter(file);
-            outputFile.close();
-        }
+//        if (!file.exists()) {
+//            PrintWriter outputFile = new PrintWriter(file);
+//            outputFile.close();
+//        }
 
         Scanner inputFile = new Scanner(file);
 
@@ -54,6 +54,8 @@ public class VehicleManager {
             vehicles.add(vehicle);
         }
         inputFile.close();
+
+//        System.out.println(vehicles.size());
     }
 
     public void add(Vehicle vehicle) throws IOException {
@@ -119,7 +121,7 @@ public class VehicleManager {
             return;
         }
 
-        if (customer.isRenting()) {
+        if (customer.isRentingVehicle()) {
             System.out.println("ERROR: This customer is already renting a vehicle!");
             return;
         }
