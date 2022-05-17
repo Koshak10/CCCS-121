@@ -23,15 +23,15 @@ public class CarRental {
 
             int choice = keyboard.nextInt();
             switch (choice) {
-                case 1 -> customerMenu(customerManager);
-                case 2 -> vehicleMenu(vehicleManager);
+                case 1 -> sendCustomerMenu(customerManager);
+                case 2 -> sendVehicleMenu(vehicleManager);
                 case 0 -> System.exit(0);
                 default -> System.out.println("Invalid choice! Please try again.");
             }
         } while (true);
     }
 
-    public static void customerMenu(CustomerManager customerManager) throws IOException {
+    public static void sendCustomerMenu(CustomerManager customerManager) throws IOException {
         Scanner keyboard = new Scanner(System.in);
 
         OptionsPane.printCustomerOptions();
@@ -66,7 +66,7 @@ public class CarRental {
         }
     }
 
-    public static void vehicleMenu(VehicleManager vehicleManager) throws IOException {
+    public static void sendVehicleMenu(VehicleManager vehicleManager) throws IOException {
         Scanner keyboard = new Scanner(System.in);
 
         OptionsPane.printVehicleOptions();
