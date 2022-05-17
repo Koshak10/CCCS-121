@@ -27,6 +27,8 @@ public class CarRental {
             case 0 -> System.exit(0);
             default -> System.out.println("Invalid choice! Please try again.");
         }
+
+        keyboard.close();
     }
 
     public static void customerMenu(CustomerManager customerManager) throws IOException {
