@@ -54,8 +54,6 @@ public class VehicleManager {
             vehicles.add(vehicle);
         }
         inputFile.close();
-
-//        System.out.println(vehicles.size());
     }
 
     public void add(Vehicle vehicle) throws IOException {
