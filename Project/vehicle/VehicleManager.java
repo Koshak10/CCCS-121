@@ -22,6 +22,11 @@ public class VehicleManager {
 
     public void setup() throws IOException {
         File file = new File("vehicles.txt");
+        if (!file.exists()) {
+            PrintWriter outputFile = new PrintWriter(file);
+            outputFile.close();
+        }
+
         Scanner inputFile = new Scanner(file);
 
         vehicles.clear();
@@ -41,6 +46,7 @@ public class VehicleManager {
                 int customerId = Integer.parseInt(lastItem);
 
                 Customer customer = customerManager.getCustomer(customerId);
+                customer.setVehicle(vehicle);
 
                 vehicle.setCustomer(customer);
             }
@@ -113,6 +119,11 @@ public class VehicleManager {
             return;
         }
 
+        if (customer.isRenting()) {
+            System.out.println("ERROR: This customer is already renting a vehicle!");
+            return;
+        }
+
         Vehicle vehicle = getVehicle(licensePlate);
 
         if (vehicle == null) {
@@ -121,7 +132,7 @@ public class VehicleManager {
         }
 
         if (!vehicle.isAvailableForRent()) {
-            System.out.println("ERROR: This vehicle is already rented to a customer!");
+            System.out.println("ERROR: This vehicle is already rented to the customer!");
             return;
         }
 
