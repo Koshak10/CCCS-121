@@ -13,10 +13,9 @@ public class CustomerManager {
 
     public void setup() throws IOException {
         File file = new File("customers.txt");
-//        if (!file.exists()) {
-//            PrintWriter outputFile = new PrintWriter(file);
-//            outputFile.close();
-//        }
+        if (file.createNewFile()) {
+            System.out.println("File created: " + file.getName());
+        }
 
         Scanner inputFile = new Scanner(file);
 
