@@ -45,7 +45,7 @@ public class Customer {
         this.vehicle = vehicle;
     }
 
-    public boolean isRenting() {
+    public boolean isRentingVehicle() {
         return vehicle != null;
     }
 
