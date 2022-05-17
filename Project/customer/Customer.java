@@ -1,10 +1,13 @@
 package customer;
 
+import vehicle.Vehicle;
+
 public class Customer {
 
     private int customerId;
     private String name;
     private String phoneNumber;
+    private Vehicle vehicle;
 
     public Customer() {}
 
@@ -36,6 +39,14 @@ public class Customer {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public boolean isRenting() {
+        return vehicle != null;
     }
 
     public String toString() {
