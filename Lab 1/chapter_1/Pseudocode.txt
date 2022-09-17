@@ -8,6 +8,7 @@ If hours is less than or equal to 40.
 	Set pay as (hours * rate)
 Otherwise
 	Set pay as ((hours - 40) * (1.5 * rate) + (40 * rate))
+End If
 
 
 Display the value in the pay variable.
