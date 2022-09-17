@@ -1,0 +1,13 @@
+Display "How many hours did you work?".
+Input hours.
+
+Display "How much are you paid per hour?".
+Input rate.
+
+If hours is less than or equal to 40.
+	Set pay as (hours * rate)
+Otherwise
+	Set pay as ((hours - 40) * (1.5 * rate) + (40 * rate))
+
+
+Display the value in the pay variable.
