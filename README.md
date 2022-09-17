@@ -1,3 +1,4 @@
-# CCCS121 (UJ)
-CCCS121 - Object Oriented Programming 1
+# CCCS-121 (UJ)
+CCCS-121 - Object-Oriented Programming 1
 
+2021
